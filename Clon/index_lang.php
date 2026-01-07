@@ -117,6 +117,52 @@
         text-align: left;
     }
 
+    /* ========== AJUSTES CALENDARIO EN MODAL - REDUCIR ESPACIO ========== */
+    /* Reducir padding del modal body */
+    .theme4-modal-body {
+        padding: 1rem !important;
+    }
+
+    /* Reducir espacio del calendario */
+    .wizard-step[data-step="1"] {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Reducir espacios internos del datepicker */
+    .ui-datepicker,
+    .datepicker,
+    #ui-datepicker-div {
+        padding: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .ui-datepicker table,
+    .datepicker table {
+        margin-bottom: 0.5rem !important;
+    }
+
+    .ui-datepicker td,
+    .datepicker td {
+        padding: 2px !important;
+    }
+
+    /* Reducir espacio de los br después del calendario */
+    .wizard-step[data-step="1"] br {
+        display: none !important;
+    }
+
+    /* Reducir margin de la navegación del wizard */
+    .wizard-navigation {
+        margin-top: 0.75rem !important;
+        padding-top: 0.75rem !important;
+    }
+
+    /* Asegurar que el step 1 sea compacto */
+    .wizard-step[data-step="1"] > * {
+        margin-bottom: 0.5rem !important;
+    }
+
     /* ========== ESTILOS CRÍTICOS NAVBAR LOUVRE - FORZADOS ========== */
 
     /* Logo con fondo CASI BLANCO PURO (95%) para MÁXIMO contraste */
@@ -471,11 +517,9 @@
                                         <div class="wizard-step" data-step="1">
                                             <input type="hidden" class="input_fecha" name="fecha" id="fecha" value="<?= date('Y-m-d');?>" />
                                             <?php render_calendar(); ?>
-                                            <br><br>
                                             <div style="display:none;">
                                                 <?php render_tour_selector(); ?>
                                             </div>
-                                            <br>
                                         </div>
 
                                         <!-- Step 2: Servicios + Hora + Combos -->
