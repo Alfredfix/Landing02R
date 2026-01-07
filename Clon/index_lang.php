@@ -171,16 +171,16 @@
     .datepicker td a::after,
     td.ui-datepicker-current-day::after,
     td.ui-datepicker-today::after {
-        margin-top: 3px !important;
-        transform: translateY(3px) !important;
+        margin-top: -6px !important;
+        transform: translateY(-6px) !important;
     }
 
     /* Estilos específicos para los puntos de disponibilidad */
     .ui-state-default::after,
     .ui-state-active::after,
     .ui-state-hover::after {
-        margin-top: 3px !important;
-        transform: translateY(3px) !important;
+        margin-top: -6px !important;
+        transform: translateY(-6px) !important;
     }
 
     /* Si los puntos están dentro de un elemento con clase específica */
@@ -188,8 +188,8 @@
     .disponible::before,
     .available::before,
     .unavailable::before {
-        margin-top: 3px !important;
-        transform: translateY(3px) !important;
+        margin-top: -6px !important;
+        transform: translateY(-6px) !important;
     }
 
     /* ========== ESTILOS CRÍTICOS NAVBAR LOUVRE - FORZADOS ========== */
