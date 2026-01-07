@@ -183,11 +183,35 @@
         transform: translateY(-6px) !important;
     }
 
+    /* Reglas específicas para días seleccionados y día actual - MUY IMPORTANTE */
+    td.ui-datepicker-current-day a::after,
+    td.ui-datepicker-current-day span::after,
+    td.ui-datepicker-today a::after,
+    td.ui-datepicker-today span::after,
+    .ui-datepicker-current-day .ui-state-active::after,
+    .ui-datepicker-today .ui-state-active::after,
+    a.ui-state-active::after,
+    span.ui-state-active::after {
+        margin-top: -6px !important;
+        transform: translateY(-6px) !important;
+        top: auto !important;
+        bottom: auto !important;
+    }
+
     /* Si los puntos están dentro de un elemento con clase específica */
     .agotadas::before,
     .disponible::before,
     .available::before,
     .unavailable::before {
+        margin-top: -6px !important;
+        transform: translateY(-6px) !important;
+    }
+
+    /* Forzar para todos los posibles pseudo-elementos en celdas del datepicker */
+    .ui-datepicker td::after,
+    .ui-datepicker td *::after,
+    .datepicker td::after,
+    .datepicker td *::after {
         margin-top: -6px !important;
         transform: translateY(-6px) !important;
     }
