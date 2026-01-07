@@ -97,6 +97,9 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.style.overflow = 'hidden';
     }
 
+    // Exportar openModal al contexto global para uso desde onclick
+    window.openModal = openModal;
+
     function closeModal() {
         modal.classList.remove('show');
         document.body.style.overflow = '';

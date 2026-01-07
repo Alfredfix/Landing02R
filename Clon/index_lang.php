@@ -267,12 +267,17 @@
                     <div class="tour-card-content">
                         <h3 class="tour-card-title"><?= $title ?></h3>
                         <div class="tour-card-price">
-                            <small><?= $connection->tra("Desde")?></small> 
+                            <small><?= $connection->tra("Desde")?></small>
                             <span id="<?= $price_id ?>">--,--</span><?= $currency_symbol ?>
                         </div>
-                        <a href="/styles/<?= $__themeSlug ?? getActiveThemeSlug() ?>/info_tours.php?tour=<?= $key_tour ?>&idioma=<?= $idioma ?>" class="tour-info-btn">
-                            +INFO
-                        </a>
+                        <div class="tour-buttons-container">
+                            <a href="/styles/<?= $__themeSlug ?? getActiveThemeSlug() ?>/info_tours.php?tour=<?= $key_tour ?>&idioma=<?= $idioma ?>" class="tour-info-btn">
+                                +INFO
+                            </a>
+                            <button class="tour-buy-btn" onclick="openModal('<?= $key_tour ?>', '<?= addslashes($title) ?>')">
+                                <?= $connection->tra("COMPRAR ENTRADAS") ?>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <?php 
@@ -434,7 +439,7 @@
     <div id="theme4Modal" class="theme4-modal">
         <div class="theme4-modal-content">
             <div class="theme4-modal-header">
-                <h3 class="theme4-modal-title"><?= $connection->tra("Reserva tu entrada") ?></h3>
+                <h3 class="theme4-modal-title"><?= $connection->tra("Elige una fecha y reserva.") ?></h3>
                 <button class="theme4-modal-close">&times;</button>
             </div>
             <div class="theme4-modal-body">
