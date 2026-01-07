@@ -163,6 +163,35 @@
         margin-bottom: 0.5rem !important;
     }
 
+    /* ========== AJUSTES PUNTOS DE DISPONIBILIDAD - NO PISAR PRECIOS ========== */
+    /* Desplazar puntos de disponibilidad hacia abajo para que no pisen los precios */
+    .ui-datepicker td span::after,
+    .ui-datepicker td a::after,
+    .datepicker td span::after,
+    .datepicker td a::after,
+    td.ui-datepicker-current-day::after,
+    td.ui-datepicker-today::after {
+        margin-top: 3px !important;
+        transform: translateY(3px) !important;
+    }
+
+    /* Estilos específicos para los puntos de disponibilidad */
+    .ui-state-default::after,
+    .ui-state-active::after,
+    .ui-state-hover::after {
+        margin-top: 3px !important;
+        transform: translateY(3px) !important;
+    }
+
+    /* Si los puntos están dentro de un elemento con clase específica */
+    .agotadas::before,
+    .disponible::before,
+    .available::before,
+    .unavailable::before {
+        margin-top: 3px !important;
+        transform: translateY(3px) !important;
+    }
+
     /* ========== ESTILOS CRÍTICOS NAVBAR LOUVRE - FORZADOS ========== */
 
     /* Logo con fondo CASI BLANCO PURO (95%) para MÁXIMO contraste */
