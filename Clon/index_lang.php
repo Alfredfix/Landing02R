@@ -171,16 +171,16 @@
     .datepicker td a::after,
     td.ui-datepicker-current-day::after,
     td.ui-datepicker-today::after {
-        margin-top: -6px !important;
-        transform: translateY(-6px) !important;
+        margin-top: 6px !important;
+        transform: translateY(6px) !important;
     }
 
     /* Estilos específicos para los puntos de disponibilidad */
     .ui-state-default::after,
     .ui-state-active::after,
     .ui-state-hover::after {
-        margin-top: -6px !important;
-        transform: translateY(-6px) !important;
+        margin-top: 6px !important;
+        transform: translateY(6px) !important;
     }
 
     /* Reglas específicas para días seleccionados y día actual - MUY IMPORTANTE */
@@ -192,8 +192,8 @@
     .ui-datepicker-today .ui-state-active::after,
     a.ui-state-active::after,
     span.ui-state-active::after {
-        margin-top: -6px !important;
-        transform: translateY(-6px) !important;
+        margin-top: 6px !important;
+        transform: translateY(6px) !important;
         top: auto !important;
         bottom: auto !important;
     }
@@ -203,8 +203,8 @@
     .disponible::before,
     .available::before,
     .unavailable::before {
-        margin-top: -6px !important;
-        transform: translateY(-6px) !important;
+        margin-top: 6px !important;
+        transform: translateY(6px) !important;
     }
 
     /* Forzar para todos los posibles pseudo-elementos en celdas del datepicker */
@@ -212,8 +212,8 @@
     .ui-datepicker td *::after,
     .datepicker td::after,
     .datepicker td *::after {
-        margin-top: -6px !important;
-        transform: translateY(-6px) !important;
+        margin-top: 6px !important;
+        transform: translateY(6px) !important;
     }
 
     /* ========== ESTILOS CRÍTICOS NAVBAR LOUVRE - FORZADOS ========== */
