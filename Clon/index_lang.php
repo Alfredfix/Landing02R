@@ -164,26 +164,44 @@
     }
 
     /* ========== AJUSTES PUNTOS DE DISPONIBILIDAD - NO PISAR PRECIOS ========== */
-    /* Desplazar puntos de disponibilidad hacia abajo para que no pisen los precios */
+    /* Hacer que las celdas sean contenedores para posicionamiento absoluto */
+    .ui-datepicker td,
+    .datepicker td {
+        position: relative !important;
+    }
+
+    .ui-datepicker td a,
+    .ui-datepicker td span,
+    .datepicker td a,
+    .datepicker td span {
+        position: relative !important;
+        display: block !important;
+    }
+
+    /* Desplazar puntos de disponibilidad hacia abajo usando bottom negativo */
     .ui-datepicker td span::after,
     .ui-datepicker td a::after,
     .datepicker td span::after,
-    .datepicker td a::after,
-    td.ui-datepicker-current-day::after,
-    td.ui-datepicker-today::after {
-        margin-top: 6px !important;
-        transform: translateY(6px) !important;
+    .datepicker td a::after {
+        position: absolute !important;
+        bottom: -8px !important;
+        top: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
     }
 
-    /* Estilos específicos para los puntos de disponibilidad */
+    /* Estilos específicos para los estados de los días */
     .ui-state-default::after,
     .ui-state-active::after,
     .ui-state-hover::after {
-        margin-top: 6px !important;
-        transform: translateY(6px) !important;
+        position: absolute !important;
+        bottom: -8px !important;
+        top: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
     }
 
-    /* Reglas específicas para días seleccionados y día actual - MUY IMPORTANTE */
+    /* Reglas específicas para días seleccionados y día actual */
     td.ui-datepicker-current-day a::after,
     td.ui-datepicker-current-day span::after,
     td.ui-datepicker-today a::after,
@@ -192,10 +210,11 @@
     .ui-datepicker-today .ui-state-active::after,
     a.ui-state-active::after,
     span.ui-state-active::after {
-        margin-top: 6px !important;
-        transform: translateY(6px) !important;
+        position: absolute !important;
+        bottom: -8px !important;
         top: auto !important;
-        bottom: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
     }
 
     /* Si los puntos están dentro de un elemento con clase específica */
@@ -203,17 +222,23 @@
     .disponible::before,
     .available::before,
     .unavailable::before {
-        margin-top: 6px !important;
-        transform: translateY(6px) !important;
+        position: absolute !important;
+        bottom: -8px !important;
+        top: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
     }
 
-    /* Forzar para todos los posibles pseudo-elementos en celdas del datepicker */
+    /* Forzar para todos los posibles pseudo-elementos */
     .ui-datepicker td::after,
     .ui-datepicker td *::after,
     .datepicker td::after,
     .datepicker td *::after {
-        margin-top: 6px !important;
-        transform: translateY(6px) !important;
+        position: absolute !important;
+        bottom: -8px !important;
+        top: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
     }
 
     /* ========== ESTILOS CRÍTICOS NAVBAR LOUVRE - FORZADOS ========== */
