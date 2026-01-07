@@ -1,0 +1,33 @@
+{
+    "name": "TemaLouvre",
+    "version": "1.0.0",
+    "description": "Tema inspirado en museedulouvre-tickets.org con diseño elegante negro/gris, hero minimalista, secciones de contenido y carousel informativo",
+    "author": "Feel The City Tours",
+    "assets": {
+        "css": [
+            "theme.css"
+        ],
+        "js": [
+            "theme.js"
+        ],
+        "fonts": [
+            "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        ]
+    },
+    "features": {
+        "hero": true,
+        "features_bar": true,
+        "benefits_section": true,
+        "content_sections": true,
+        "info_carousel": true,
+        "contact_section": true,
+        "modal_wizard": true
+    },
+    "colors": {
+        "primary": "#1a1a1a",
+        "primary_dark": "#000000",
+        "primary_light": "#333333",
+        "accent": "#c9a227",
+        "background": "#f5f5f5"
+    }
+}

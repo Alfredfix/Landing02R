@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Tema Louvre - Entradas Museo del Louvre</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary-color: #1a1a1a;
+            --primary-light: #333333;
+            --accent-color: #c9a227;
+            --text-color: #333;
+            --text-light: #666;
+            --text-muted: #888;
+            --bg-color: #f5f5f5;
+            --bg-light: #fafafa;
+            --card-bg: #fff;
+            --shadow-soft: 0 2px 15px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* NAVBAR */
+        .louvre-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.08);
+            padding: 0.6rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .louvre-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        .louvre-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .louvre-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .louvre-nav-links {
+            display: flex;
+            gap: 1.75rem;
+            list-style: none;
+        }
+
+        .louvre-nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .louvre-nav-links a:hover { color: var(--text-muted); }
+
+        /* HERO */
+        .louvre-hero {
+            position: relative;
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), 
+                        url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1920&q=80') center/cover no-repeat;
+            text-align: center;
+            color: #fff;
+            padding: 5rem 2rem 4rem;
+        }
+
+        .louvre-hero-content {
+            max-width: 850px;
+            animation: fadeInUp 0.7s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .louvre-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .louvre-hero-link {
+            display: block;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+        }
+
+        .louvre-hero-link:hover { color: #fff; }
+
+        .louvre-hero-cta {
+            display: inline-block;
+            padding: 14px 40px;
+            background: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 2px solid var(--primary-color);
+        }
+
+        .louvre-hero-cta:hover {
+            background: transparent;
+            border-color: #fff;
+        }
+
+        .louvre-hero-subtitle {
+            font-size: 0.95rem;
+            margin-top: 1.75rem;
+            opacity: 0.9;
+        }
+
+        /* FEATURES */
+        .louvre-features {
+            display: flex;
+            justify-content: center;
+            gap: 3.5rem;
+            flex-wrap: wrap;
+            padding: 2rem 2rem;
+            background: #fff;
+            box-shadow: var(--shadow-soft);
+            margin-top: -1.5rem;
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .louvre-feature { text-align: center; }
+
+        .louvre-feature-highlight {
+            display: block;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .louvre-feature-text {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* SECTION TITLES */
+        .louvre-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-align: center;
+            margin: 3rem 0 1.75rem;
+            color: var(--primary-color);
+        }
+
+        .louvre-section-title-left {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: left;
+            margin: 2rem 0 1rem;
+            color: var(--primary-color);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 2rem;
+        }
+
+        /* TOUR CARDS */
+        .tour-cards-section {
+            padding: 1rem 0 2.5rem;
+            background: var(--bg-color);
+        }
+
+        .tour-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+            padding: 1rem;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        .tour-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tour-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .tour-card-image {
+            height: 160px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .tour-card-content {
+            padding: 1.1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tour-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: var(--primary-color);
+            line-height: 1.35;
+        }
+
+        .tour-card-price {
+            font-size: 1rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-top: auto;
+            margin-bottom: 0.85rem;
+        }
+
+        .tour-card-price small {
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 0.85rem;
+        }
+
+        /* Contenedor de botones */
+        .tour-buttons-container {
+            display: flex;
+            gap: 0;
+            width: 100%;
+        }
+
+        /* Botón +INFO (Dorado) */
+        .tour-info-btn {
+            flex: 0 0 auto;
+            padding: 10px 18px;
+            background-color: var(--accent-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px 0 0 4px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            transition: var(--transition);
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: none;
+        }
+
+        .tour-info-btn:hover {
+            background: #b8912a;
+            box-shadow: 0 2px 8px rgba(201, 162, 39, 0.3);
+        }
+
+        /* Botón COMPRAR ENTRADAS (Teal/Verde azulado) */
+        .tour-buy-btn {
+            flex: 1;
+            padding: 10px 18px;
+            background-color: #1e7c8c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 0 4px 4px 0;
+            font-weight: 700;
+            font-size: 0.75rem;
+            transition: var(--transition);
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .tour-buy-btn:hover {
+            background: #165d6a;
+            box-shadow: 0 2px 8px rgba(30, 124, 140, 0.3);
+        }
+
+        /* BENEFITS */
+        .louvre-benefits {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            padding: 2rem 2rem;
+            background: var(--bg-light);
+            max-width: 1050px;
+            margin: 0 auto 2rem;
+        }
+
+        .louvre-benefit { text-align: center; max-width: 260px; }
+
+        .louvre-benefit-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .louvre-benefit-text {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* CONTENT SECTIONS */
+        .louvre-content-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem 1.5rem;
+        }
+
+        .louvre-content-section p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 0.85rem;
+            font-size: 0.95rem;
+            text-align: justify;
+        }
+
+        .louvre-content-section ul {
+            color: var(--text-light);
+            margin: 0.75rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .louvre-content-section ul li { margin-bottom: 0.4rem; }
+        .louvre-content-section strong { color: var(--text-color); }
+
+        /* INFO CAROUSEL */
+        .louvre-info-section {
+            padding: 2.5rem 2rem 3rem;
+            background: #fff;
+        }
+
+        .louvre-info-carousel {
+            max-width: 1050px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .louvre-info-slide {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .louvre-info-slide.active {
+            display: flex;
+            gap: 2.5rem;
+            align-items: stretch;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .louvre-info-content {
+            flex: 1;
+            padding: 0.75rem 0;
+        }
+
+        .louvre-info-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--primary-color);
+            color: #fff;
+            font-weight: 700;
+            border-radius: 50%;
+            margin-bottom: 0.85rem;
+            font-size: 0.95rem;
+        }
+
+        .louvre-info-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.85rem;
+            color: var(--primary-color);
+            line-height: 1.3;
+        }
+
+        .louvre-info-text {
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 0.9rem;
+            text-align: justify;
+        }
+
+        .louvre-info-image {
+            flex: 1;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .louvre-info-image img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+        }
+
+        .louvre-carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.4rem;
+            margin-top: 1.75rem;
+        }
+
+        .louvre-carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .louvre-carousel-dot.active { background: var(--primary-color); }
+
+        .louvre-carousel-arrows {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0;
+            pointer-events: none;
+            left: 0;
+        }
+
+        .louvre-carousel-arrow {
+            width: 42px;
+            height: 42px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            pointer-events: all;
+            transition: var(--transition);
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .louvre-carousel-arrow:hover {
+            background: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+
+        .louvre-carousel-arrow.prev { margin-left: -55px; }
+        .louvre-carousel-arrow.next { margin-right: -55px; }
+
+        /* CONTACT */
+        .louvre-contact-section {
+            padding: 2.5rem 2rem;
+            background: var(--bg-light);
+            border-top: 1px solid #eee;
+        }
+
+        .louvre-contact-container {
+            max-width: 650px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .louvre-contact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.4rem;
+            color: var(--primary-color);
+        }
+
+        .louvre-contact-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .louvre-contact-hours {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* FOOTER */
+        .louvre-footer {
+            background: var(--primary-color);
+            color: rgba(255,255,255,0.7);
+            padding: 2.5rem 2rem 1.25rem;
+        }
+
+        .louvre-footer-content {
+            max-width: 1150px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .louvre-footer-logo-icon {
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .louvre-footer-links {
+            display: flex;
+            gap: 1.75rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .louvre-footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .louvre-footer-links a:hover { color: #fff; }
+
+        .louvre-footer-bottom {
+            max-width: 1150px;
+            margin: 1.5rem auto 0;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.75rem;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* MODAL */
+        .theme4-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .theme4-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme4-modal-content {
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 550px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease-out;
+            overflow: hidden;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .theme4-modal-header {
+            padding: 1.1rem 1.25rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-light);
+        }
+
+        .theme4-modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        .theme4-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: #999;
+            transition: var(--transition);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .theme4-modal-close:hover {
+            color: var(--primary-color);
+            background: #f0f0f0;
+        }
+
+        .theme4-modal-body { padding: 1.5rem; }
+
+        .modal-step { text-align: center; }
+
+        .modal-step h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.25rem;
+            color: var(--primary-color);
+        }
+
+        .modal-calendar {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .modal-btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .modal-btn:hover { background: var(--primary-light); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1100px) {
+            .louvre-carousel-arrow.prev { margin-left: 10px; }
+            .louvre-carousel-arrow.next { margin-right: 10px; }
+        }
+
+        @media (max-width: 992px) {
+            .louvre-nav-links { display: none; }
+            .louvre-info-slide.active { flex-direction: column-reverse; }
+            .louvre-info-image img { height: 230px; }
+        }
+
+        @media (max-width: 768px) {
+            .louvre-hero { min-height: 65vh; padding: 4rem 1.5rem 3rem; }
+            .louvre-hero h1 { font-size: 1.8rem; }
+            .louvre-features { gap: 1.75rem; margin-top: -1rem; padding: 1.25rem 1rem; }
+            .tour-cards-container { grid-template-columns: 1fr; padding: 0.75rem; }
+            .louvre-benefits { flex-direction: column; align-items: center; gap: 1.25rem; }
+            .louvre-footer-content { flex-direction: column; align-items: center; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="louvre-navbar">
+        <a href="#" class="louvre-logo">
+            <div class="louvre-logo-icon"><i class="fas fa-chess-rook"></i></div>
+            <span class="louvre-logo-text">Museo del Louvre</span>
+        </a>
+        <ul class="louvre-nav-links">
+            <li><a href="#tours">Entradas</a></li>
+            <li><a href="#">Actividades</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Petición de grupos</a></li>
+            <li><a href="#">Quiénes somos</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="louvre-hero">
+        <div class="louvre-hero-content">
+            <h1>Museo del Louvre Tickets</h1>
+            <a href="#tours" class="louvre-hero-link">Ver todas las actividades ↓</a>
+            <a href="#tours" class="louvre-hero-cta">Comprar Entradas</a>
+            <p class="louvre-hero-subtitle">Adquiera sus entradas con suficiente antelación</p>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="louvre-features">
+        <div class="louvre-feature">
+            <span class="louvre-feature-highlight">+ 35.000 obras expuestas</span>
+        </div>
+        <div class="louvre-feature">
+            <span class="louvre-feature-text">Museo de arte más visitado del mundo</span>
+        </div>
+        <div class="louvre-feature">
+            <span class="louvre-feature-highlight">+ 8 millones de visitantes anuales</span>
+        </div>
+    </section>
+
+    <!-- SECTION TITLE -->
+    <h2 class="louvre-section-title" id="tours">Las mejores experiencias en el Museo del Louvre</h2>
+
+    <!-- TOUR CARDS -->
+    <section class="tour-cards-section">
+        <div class="tour-cards-container">
+            <div class="tour-card">
+                <div class="tour-card-image" style="background-image: url('https://images.unsplash.com/photo-1565060169194-19fabf63012c?w=600&q=80');"></div>
+                <div class="tour-card-content">
+                    <h3 class="tour-card-title">Entrada al Museo del Louvre con acceso directo a la Mona Lisa</h3>
+                    <div class="tour-card-price"><small>Desde</small> 69€</div>
+                    <div class="tour-buttons-container">
+                        <a href="https://cmstestv2.turify.net/en/styles/Test_Alf09/info_tours.php?tour=1242&idioma=en" class="tour-info-btn">+INFO</a>
+                        <button class="tour-buy-btn" onclick="openModal('Entrada al Museo del Louvre con acceso directo a la Mona Lisa')">COMPRAR ENTRADAS</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tour-card">
+                <div class="tour-card-image" style="background-image: url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&q=80');"></div>
+                <div class="tour-card-content">
+                    <h3 class="tour-card-title">Museo del Louvre de París: Entrada + Audioguía</h3>
+                    <div class="tour-card-price"><small>Desde</small> 48€</div>
+                    <div class="tour-buttons-container">
+                        <a href="https://cmstestv2.turify.net/en/styles/Test_Alf09/info_tours.php?tour=1242&idioma=en" class="tour-info-btn">+INFO</a>
+                        <button class="tour-buy-btn" onclick="openModal('Museo del Louvre de París: Entrada + Audioguía')">COMPRAR ENTRADAS</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tour-card">
+                <div class="tour-card-image" style="background-image: url('https://images.unsplash.com/photo-1568385247005-0d371d214a5e?w=600&q=80');"></div>
+                <div class="tour-card-content">
+                    <h3 class="tour-card-title">Museo del Louvre de París: Entrada + Visita Guiada</h3>
+                    <div class="tour-card-price"><small>Desde</small> 115€</div>
+                    <div class="tour-buttons-container">
+                        <a href="https://cmstestv2.turify.net/en/styles/Test_Alf09/info_tours.php?tour=1243&idioma=en" class="tour-info-btn">+INFO</a>
+                        <button class="tour-buy-btn" onclick="openModal('Museo del Louvre de París: Entrada + Visita Guiada')">COMPRAR ENTRADAS</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tour-card">
+                <div class="tour-card-image" style="background-image: url('https://images.unsplash.com/photo-1478391679764-b2d8b3cd1e94?w=600&q=80');"></div>
+                <div class="tour-card-content">
+                    <h3 class="tour-card-title">Entrada al Museo del Louvre con Audioguía + Crucero por el Sena</h3>
+                    <div class="tour-card-price"><small>Desde</small> 60,99€</div>
+                    <div class="tour-buttons-container">
+                        <a href="https://cmstestv2.turify.net/en/styles/Test_Alf09/info_tours.php?tour=C110&idioma=en" class="tour-info-btn">+INFO</a>
+                        <button class="tour-buy-btn" onclick="openModal('Entrada al Museo del Louvre con Audioguía + Crucero por el Sena')">COMPRAR ENTRADAS</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tour-card">
+                <div class="tour-card-image" style="background-image: url('https://images.unsplash.com/photo-1541264161754-445bbdd7de52?w=600&q=80');"></div>
+                <div class="tour-card-content">
+                    <h3 class="tour-card-title">Visita Guiada al Museo del Louvre con entrada al Museo de Orsay</h3>
+                    <div class="tour-card-price"><small>Desde</small> 123€</div>
+                    <div class="tour-buttons-container">
+                        <a href="https://cmstestv2.turify.net/en/styles/Test_Alf09/info_tours.php?tour=C105&idioma=en" class="tour-info-btn">+INFO</a>
+                        <button class="tour-buy-btn" onclick="openModal('Visita Guiada al Museo del Louvre con entrada al Museo de Orsay')">COMPRAR ENTRADAS</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tour-card">
+                <div class="tour-card-image" style="background-image: url('https://images.unsplash.com/photo-1591289009723-aef0a1a8a211?w=600&q=80');"></div>
+                <div class="tour-card-content">
+                    <h3 class="tour-card-title">Visita Guiada Privada del Museo del Louvre</h3>
+                    <div class="tour-card-price"><small>Desde</small> 200€</div>
+                    <div class="tour-buttons-container">
+                        <a href="https://cmstestv2.turify.net/en/styles/Test_Alf09/info_tours.php?tour=1248&idioma=en" class="tour-info-btn">+INFO</a>
+                        <button class="tour-buy-btn" onclick="openModal('Visita Guiada Privada del Museo del Louvre')">COMPRAR ENTRADAS</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tour-card">
+                <div class="tour-card-image" style="background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80');"></div>
+                <div class="tour-card-content">
+                    <h3 class="tour-card-title">Tour París Monumental y paseo en Barco por el Sena</h3>
+                    <div class="tour-card-price"><small>Desde</small> 12€</div>
+                    <div class="tour-buttons-container">
+                        <a href="https://cmstestv2.turify.net/en/styles/Test_Alf09/info_tours.php?tour=C103&idioma=en" class="tour-info-btn">+INFO</a>
+                        <button class="tour-buy-btn" onclick="openModal('Tour París Monumental y paseo en Barco por el Sena')">COMPRAR ENTRADAS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="louvre-benefits">
+        <div class="louvre-benefit">
+            <div class="louvre-benefit-title">Escoja el tipo de visita</div>
+            <div class="louvre-benefit-text">Seleccione la que más se adapte a sus preferencias</div>
+        </div>
+        <div class="louvre-benefit">
+            <div class="louvre-benefit-title">Flexibilidad horaria</div>
+            <div class="louvre-benefit-text">Escoja el día y la hora según sus preferencias</div>
+        </div>
+        <div class="louvre-benefit">
+            <div class="louvre-benefit-title">Recorra cada rincón del Museo del Louvre</div>
+            <div class="louvre-benefit-text">Disfrute de un monumento único en el mundo</div>
+        </div>
+    </section>
+
+    <!-- CONTENT SECTIONS -->
+    <h2 class="louvre-section-title-left">Adquisición de entradas para el Museo del Louvre</h2>
+    <div class="louvre-content-section">
+        <p>Para acceder al <strong>Museo del Louvre</strong>, existen diversas opciones para la adquisición de entradas, lo que le permitirá elegir la modalidad que mejor se adapte a sus necesidades y evitar largas esperas. Se pueden adquirir de <strong>manera online</strong> con antelación y mediante las <strong>taquillas del museo</strong>, situadas en la pirámide de vidrio y otras áreas de acceso.</p>
+        <p>Con la adquisición de las entradas, se incluye <strong>el acceso a las colecciones permanentes</strong> y <strong>exposiciones temporales del Museo del Louvre</strong>, así como al <strong>Museo Eugène Delacroix</strong> (solo si se hace en un plazo de 48 h, a partir de su primer uso).</p>
+    </div>
+
+    <h2 class="louvre-section-title-left">Horario del Museo del Louvre</h2>
+    <div class="louvre-content-section">
+        <p>El horario habitual del Museo del Louvre es:</p>
+        <ul>
+            <li><strong>Lunes, jueves, sábado y domingo:</strong> 9:00-18:00</li>
+            <li><strong>Miércoles y viernes:</strong> 9:00-21:00</li>
+            <li><strong>Martes:</strong> Cerrado</li>
+        </ul>
+        <p>Es importante tener en consideración que el museo puede cerrar en días festivos o durante eventos especiales.</p>
+    </div>
+
+    <!-- INFO CAROUSEL -->
+    <section class="louvre-info-section">
+        <div class="louvre-info-carousel">
+            <div class="louvre-info-slide active">
+                <div class="louvre-info-content">
+                    <span class="louvre-info-number">1</span>
+                    <h3 class="louvre-info-title">De la Colección de la Monarquía al Museo del Pueblo</h3>
+                    <p class="louvre-info-text"><strong>El Museo del Louvre nació durante la Revolución Francesa</strong>, cuando las colecciones privadas de la monarquía, la aristocracia y la iglesia fueron abiertas al público. Este gesto transformador marcó un antes y un después en la historia de los museos, al convertir el arte en un patrimonio accesible para todos.</p>
+                </div>
+                <div class="louvre-info-image">
+                    <img src="https://images.unsplash.com/photo-1565060169194-19fabf63012c?w=800&q=80" alt="Historia del Louvre">
+                </div>
+            </div>
+            
+            <div class="louvre-info-slide">
+                <div class="louvre-info-content">
+                    <span class="louvre-info-number">2</span>
+                    <h3 class="louvre-info-title">La Mona Lisa de Leonardo da Vinci</h3>
+                    <p class="louvre-info-text">La <strong>Mona Lisa</strong>, pintada por <strong>Leonardo da Vinci</strong> entre 1503 y 1506, es una de las <strong>obras más icónicas y misteriosas</strong> de la historia del arte. La pintura destaca por su <strong>sonrisa enigmática</strong> y por el uso de la técnica del <strong>sfumato</strong>.</p>
+                </div>
+                <div class="louvre-info-image">
+                    <img src="https://images.unsplash.com/photo-1568385247005-0d371d214a5e?w=800&q=80" alt="La Mona Lisa">
+                </div>
+            </div>
+            
+            <div class="louvre-info-slide">
+                <div class="louvre-info-content">
+                    <span class="louvre-info-number">3</span>
+                    <h3 class="louvre-info-title">Colecciones Diversas del Louvre</h3>
+                    <p class="louvre-info-text">El <strong>Museo del Louvre</strong> alberga a más de <strong>35.000 obras de arte</strong> que abarcan desde la <strong>antigüedad</strong> hasta el <strong>arte contemporáneo</strong>. Sus salas están llenas de piezas de diferentes culturas y períodos.</p>
+                </div>
+                <div class="louvre-info-image">
+                    <img src="https://images.unsplash.com/photo-1591289009723-aef0a1a8a211?w=800&q=80" alt="Colecciones del Louvre">
+                </div>
+            </div>
+            
+            <div class="louvre-info-slide">
+                <div class="louvre-info-content">
+                    <span class="louvre-info-number">4</span>
+                    <h3 class="louvre-info-title">La Pirámide del Louvre: Entre la Historia y la Modernidad</h3>
+                    <p class="louvre-info-text">La <strong>Pirámide de vidrio</strong> del <strong>Museo del Louvre</strong> es una de las estructuras más reconocidas del mundo. Fue inaugurada en 1989 como parte de una renovación del museo, diseñada por el arquitecto <strong>Leoh Ming Pei</strong>.</p>
+                </div>
+                <div class="louvre-info-image">
+                    <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80" alt="La Pirámide del Louvre">
+                </div>
+            </div>
+            
+            <div class="louvre-info-slide">
+                <div class="louvre-info-content">
+                    <span class="louvre-info-number">5</span>
+                    <h3 class="louvre-info-title">Un viaje al Antiguo Egipto</h3>
+                    <p class="louvre-info-text">La <strong>colección de arte egipcio</strong> del Museo del Louvre es una de las más importantes y completas a nivel mundial, con más de <strong>50.000 piezas</strong> que abarcan más de <strong>4.000</strong> años de historia.</p>
+                </div>
+                <div class="louvre-info-image">
+                    <img src="https://images.unsplash.com/photo-1541264161754-445bbdd7de52?w=800&q=80" alt="Arte Egipcio">
+                </div>
+            </div>
+            
+            <div class="louvre-info-slide">
+                <div class="louvre-info-content">
+                    <span class="louvre-info-number">6</span>
+                    <h3 class="louvre-info-title">El Louvre actual: Un Icono Global del Arte</h3>
+                    <p class="louvre-info-text">El <strong>Museo del Louvre</strong> es uno de los <strong>principales destinos culturales del mundo</strong>, atrayendo a millones de visitantes cada año. Actualmente, el museo continúa siendo un lugar esencial para quienes desean sumergirse en el arte y la historia.</p>
+                </div>
+                <div class="louvre-info-image">
+                    <img src="https://images.unsplash.com/photo-1478391679764-b2d8b3cd1e94?w=800&q=80" alt="El Louvre Hoy">
+                </div>
+            </div>
+            
+            <div class="louvre-carousel-arrows">
+                <button class="louvre-carousel-arrow prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="louvre-carousel-arrow next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            
+            <div class="louvre-carousel-nav">
+                <div class="louvre-carousel-dot active"></div>
+                <div class="louvre-carousel-dot"></div>
+                <div class="louvre-carousel-dot"></div>
+                <div class="louvre-carousel-dot"></div>
+                <div class="louvre-carousel-dot"></div>
+                <div class="louvre-carousel-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="louvre-contact-section">
+        <div class="louvre-contact-container">
+            <h2 class="louvre-contact-title">Atención al cliente</h2>
+            <p class="louvre-contact-subtitle">Te ayudamos en lo que necesites</p>
+            <p class="louvre-contact-hours">Servicio de atención al cliente de lunes a domingo de 8:30 a 20:00h</p>
+            <br>
+            <a href="mailto:soporte@feelthecitytours.com" style="color: #1a1a1a; text-decoration: none;">
+                <i class="far fa-envelope"></i> soporte@feelthecitytours.com
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="louvre-footer">
+        <div class="louvre-footer-content">
+            <div class="louvre-footer-logo">
+                <div class="louvre-footer-logo-icon"><i class="fas fa-chess-rook"></i></div>
+            </div>
+            <ul class="louvre-footer-links">
+                <li><a href="#">Política de privacidad y cookies</a></li>
+                <li><a href="#">Condiciones generales</a></li>
+                <li><a href="#">Aviso legal</a></li>
+            </ul>
+        </div>
+        <div class="louvre-footer-bottom">
+            Feel The City Tours - Agencia de viajes especializada en la venta de entradas, experiencias y tours. No somos la venta oficial del Museo del Louvre.
+        </div>
+    </footer>
+
+    <!-- MODAL -->
+    <div id="theme4Modal" class="theme4-modal">
+        <div class="theme4-modal-content">
+            <div class="theme4-modal-header">
+                <h3 class="theme4-modal-title">Reserva tu entrada</h3>
+                <button class="theme4-modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="theme4-modal-body">
+                <div class="modal-step">
+                    <h4>Selecciona una fecha</h4>
+                    <div class="modal-calendar">
+                        <p style="color: #888; font-size: 0.85rem;">📅 Aquí aparecería el calendario de tu sistema</p>
+                        <br>
+                        <input type="date" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 0.95rem;">
+                    </div>
+                    <button class="modal-btn">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Carousel
+        const slides = document.querySelectorAll('.louvre-info-slide');
+        const dots = document.querySelectorAll('.louvre-carousel-dot');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            if (index >= slides.length) index = 0;
+            if (index < 0) index = slides.length - 1;
+            
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        document.querySelector('.louvre-carousel-arrow.next').addEventListener('click', () => showSlide(currentSlide + 1));
+        document.querySelector('.louvre-carousel-arrow.prev').addEventListener('click', () => showSlide(currentSlide - 1));
+        dots.forEach((dot, index) => dot.addEventListener('click', () => showSlide(index)));
+
+        setInterval(() => showSlide(currentSlide + 1), 7000);
+
+        // Modal
+        function openModal(title) {
+            document.querySelector('.theme4-modal-title').textContent = title;
+            document.getElementById('theme4Modal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('theme4Modal').classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('theme4Modal').addEventListener('click', (e) => {
+            if (e.target.id === 'theme4Modal') closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.tour-card, .louvre-feature, .louvre-benefit').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(15px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
