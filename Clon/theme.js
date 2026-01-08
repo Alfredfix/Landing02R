@@ -419,24 +419,33 @@ document.addEventListener('DOMContentLoaded', function () {
     // MENÚ HAMBURGUESA MÓVIL
     // =============================================
     function initMobileMenu() {
-        // Crear botón hamburguesa si no existe
-        let navbarToggler = document.querySelector('.navbar-toggler');
-        if (!navbarToggler) {
-            const navbar = document.querySelector('.navbar, header.navbar, nav.navbar');
-            if (navbar) {
-                navbarToggler = document.createElement('button');
-                navbarToggler.className = 'navbar-toggler';
-                navbarToggler.setAttribute('aria-label', 'Toggle navigation');
-                navbarToggler.innerHTML = '<span class="navbar-toggler-icon"></span>';
+        console.log('[MobileMenu] Inicializando menú móvil...');
 
-                // Insertar el botón después del logo
-                const navbarBrand = navbar.querySelector('.navbar-brand');
-                if (navbarBrand) {
-                    navbarBrand.parentNode.insertBefore(navbarToggler, navbarBrand.nextSibling);
-                } else {
-                    navbar.appendChild(navbarToggler);
-                }
+        // Buscar navbar
+        const navbar = document.querySelector('nav.navbar, header.navbar, .navbar');
+        if (!navbar) {
+            console.warn('[MobileMenu] No se encontró navbar');
+            return;
+        }
+
+        console.log('[MobileMenu] Navbar encontrado:', navbar);
+
+        // Crear botón hamburguesa si no existe
+        let navbarToggler = navbar.querySelector('.navbar-toggler');
+        if (!navbarToggler) {
+            navbarToggler = document.createElement('button');
+            navbarToggler.className = 'navbar-toggler';
+            navbarToggler.setAttribute('aria-label', 'Toggle navigation');
+            navbarToggler.innerHTML = '<span class="navbar-toggler-icon"></span>';
+
+            // Insertar el botón en el navbar
+            const navbarBrand = navbar.querySelector('.navbar-brand, a[href*="index"]');
+            if (navbarBrand && navbarBrand.parentNode === navbar) {
+                navbar.insertBefore(navbarToggler, navbarBrand.nextSibling);
+            } else {
+                navbar.appendChild(navbarToggler);
             }
+            console.log('[MobileMenu] Botón hamburguesa creado');
         }
 
         // Crear overlay si no existe
@@ -445,56 +454,94 @@ document.addEventListener('DOMContentLoaded', function () {
             overlay = document.createElement('div');
             overlay.className = 'navbar-overlay';
             document.body.appendChild(overlay);
+            console.log('[MobileMenu] Overlay creado');
         }
 
-        // Encontrar el menú de navegación
-        const navCollapse = document.querySelector('.navbar-collapse, .louvre-nav-container, .navbar-nav');
+        // Buscar menú de navegación - buscar múltiples opciones
+        let navCollapse = navbar.querySelector('.navbar-collapse');
+        if (!navCollapse) {
+            navCollapse = navbar.querySelector('.navbar-nav');
+        }
+        if (!navCollapse) {
+            navCollapse = navbar.querySelector('ul');
+        }
+        if (!navCollapse) {
+            // Buscar cualquier contenedor con enlaces
+            const links = navbar.querySelectorAll('a[href]');
+            if (links.length > 1) {
+                navCollapse = links[0].parentElement;
+                while (navCollapse && navCollapse !== navbar && navCollapse.children.length < 2) {
+                    navCollapse = navCollapse.parentElement;
+                }
+            }
+        }
 
-        if (navbarToggler && navCollapse) {
-            // Toggle del menú
-            navbarToggler.addEventListener('click', function(e) {
-                e.stopPropagation();
-                this.classList.toggle('active');
-                navCollapse.classList.toggle('show');
-                overlay.classList.toggle('show');
-                document.body.style.overflow = navCollapse.classList.contains('show') ? 'hidden' : '';
-            });
+        if (!navCollapse) {
+            console.warn('[MobileMenu] No se encontró menú de navegación');
+            return;
+        }
 
-            // Cerrar menú al hacer clic en el overlay
-            overlay.addEventListener('click', function() {
-                navbarToggler.classList.remove('active');
-                navCollapse.classList.remove('show');
-                overlay.classList.remove('show');
-                document.body.style.overflow = '';
-            });
+        console.log('[MobileMenu] Menú encontrado:', navCollapse);
 
-            // Cerrar menú al hacer clic en un enlace
-            const navLinks = navCollapse.querySelectorAll('a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    if (window.innerWidth <= 992) {
-                        navbarToggler.classList.remove('active');
-                        navCollapse.classList.remove('show');
-                        overlay.classList.remove('show');
-                        document.body.style.overflow = '';
-                    }
-                });
-            });
+        // Toggle del menú
+        navbarToggler.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('[MobileMenu] Click en hamburguesa');
 
-            // Cerrar menú al cambiar tamaño de ventana
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 992) {
+            const isActive = this.classList.contains('active');
+            this.classList.toggle('active');
+            navCollapse.classList.toggle('show');
+            overlay.classList.toggle('show');
+            document.body.style.overflow = !isActive ? 'hidden' : '';
+
+            console.log('[MobileMenu] Menú abierto:', !isActive);
+        });
+
+        // Cerrar menú al hacer clic en el overlay
+        overlay.addEventListener('click', function() {
+            console.log('[MobileMenu] Click en overlay');
+            navbarToggler.classList.remove('active');
+            navCollapse.classList.remove('show');
+            overlay.classList.remove('show');
+            document.body.style.overflow = '';
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        const navLinks = navCollapse.querySelectorAll('a');
+        console.log('[MobileMenu] Enlaces encontrados:', navLinks.length);
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 992) {
+                    console.log('[MobileMenu] Click en enlace, cerrando menú');
                     navbarToggler.classList.remove('active');
                     navCollapse.classList.remove('show');
                     overlay.classList.remove('show');
                     document.body.style.overflow = '';
                 }
             });
-        }
+        });
+
+        // Cerrar menú al cambiar tamaño de ventana
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 992 && navCollapse.classList.contains('show')) {
+                console.log('[MobileMenu] Resize a escritorio, cerrando menú');
+                navbarToggler.classList.remove('active');
+                navCollapse.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+
+        console.log('[MobileMenu] Inicialización completada');
     }
 
-    // Inicializar menú móvil
-    initMobileMenu();
+    // Inicializar menú móvil cuando el DOM esté listo
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMobileMenu);
+    } else {
+        initMobileMenu();
+    }
 
     console.log('[LouvreTheme] Initialized successfully');
 });

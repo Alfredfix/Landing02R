@@ -1078,15 +1078,26 @@ nav.navbar > * {
 .louvre-navbar-toggler {
     display: none;
     background: transparent;
-    border: none;
+    border: 2px solid var(--accent-color);
+    border-radius: 4px;
     padding: 0.5rem;
     cursor: pointer;
     z-index: 1001;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler:hover {
+    background: rgba(201, 162, 39, 0.1);
+    border-color: var(--accent-color);
 }
 
 .navbar-toggler-icon {
     display: block;
-    width: 28px;
+    width: 24px;
     height: 2px;
     background-color: #fff;
     position: relative;
@@ -1097,19 +1108,20 @@ nav.navbar > * {
 .navbar-toggler-icon::after {
     content: '';
     display: block;
-    width: 28px;
+    width: 24px;
     height: 2px;
     background-color: #fff;
     position: absolute;
+    left: 0;
     transition: all 0.3s ease;
 }
 
 .navbar-toggler-icon::before {
-    top: -8px;
+    top: -7px;
 }
 
 .navbar-toggler-icon::after {
-    top: 8px;
+    top: 7px;
 }
 
 /* Animación del botón hamburguesa cuando está activo */
@@ -1132,7 +1144,7 @@ nav.navbar > * {
     /* Mostrar botón hamburguesa en móvil */
     .navbar-toggler,
     .louvre-navbar-toggler {
-        display: block;
+        display: flex !important;
         margin-left: auto;
     }
 
