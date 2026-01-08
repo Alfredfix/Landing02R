@@ -1068,3 +1068,154 @@ nav.navbar > * {
 .reserva .derecha {
     padding: 0 15px;
 }
+
+/* =============================================
+   MENÚ HAMBURGUESA PARA MÓVIL
+============================================= */
+
+/* Botón hamburguesa - oculto por defecto en escritorio */
+.navbar-toggler,
+.louvre-navbar-toggler {
+    display: none;
+    background: transparent;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.navbar-toggler-icon {
+    display: block;
+    width: 28px;
+    height: 2px;
+    background-color: #fff;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler-icon::before {
+    top: -8px;
+}
+
+.navbar-toggler-icon::after {
+    top: 8px;
+}
+
+/* Animación del botón hamburguesa cuando está activo */
+.navbar-toggler.active .navbar-toggler-icon {
+    background-color: transparent;
+}
+
+.navbar-toggler.active .navbar-toggler-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.navbar-toggler.active .navbar-toggler-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+/* Media queries para móvil */
+@media (max-width: 992px) {
+    /* Mostrar botón hamburguesa en móvil */
+    .navbar-toggler,
+    .louvre-navbar-toggler {
+        display: block;
+        margin-left: auto;
+    }
+
+    /* Ocultar el menú de navegación por defecto en móvil */
+    .navbar-nav,
+    .navbar .navbar-nav,
+    .louvre-nav-container,
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--primary-dark);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 80px 2rem 2rem;
+        transition: right 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Mostrar menú cuando está activo */
+    .navbar-collapse.show,
+    .louvre-nav-container.show {
+        right: 0;
+    }
+
+    /* Ajustar items del menú en móvil */
+    .navbar .nav-item,
+    .navbar-nav .nav-item {
+        width: 100%;
+        margin: 0;
+    }
+
+    .navbar .nav-item a,
+    .navbar .nav-link,
+    .navbar-nav .nav-link {
+        width: 100%;
+        padding: 1rem 0 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 1rem !important;
+    }
+
+    /* Overlay oscuro cuando el menú está abierto */
+    .navbar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-overlay.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Ajustar navbar en móvil */
+    .navbar,
+    header.navbar {
+        padding: 0.75rem 1.5rem !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Asegurar que el logo esté a la izquierda */
+    .navbar-brand {
+        margin-right: auto;
+    }
+
+    /* Selector de idioma dentro del menú móvil */
+    .header-selectors {
+        width: 100%;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}
